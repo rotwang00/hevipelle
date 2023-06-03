@@ -4,7 +4,7 @@ let lastUpdate = Date.now();
 
 for (let i = 0; i < 10; i++) {
   let generator = {
-    cost: Math.pow(Math.pow(10, i), i),
+    cost: Math.pow(Math.pow(10, i), i) * 10,
     bought: 0,
     amount: 0,
     mult: 1,
@@ -22,6 +22,16 @@ function format(amount) {
   }
 }
 
+function buyGenerator(i) {
+  let g = generators[i - 1];
+  if (g.cost > money) return;
+  money -= g.cost;
+  g.amount += 1;
+  g.bought += 1;
+  g.mult *= 1.05;
+  g.cost *= 1.05;
+}
+
 function updateGUI() {
   document.getElementById("currency").textContent = `You have $${format(
     money
@@ -37,6 +47,9 @@ function updateGUI() {
       format(g.mult) +
       "x<br>Cost: " +
       format(g.cost);
+    if (g.cost > money)
+      document.getElementById("gen" + (i + 1)).classList.add("locked");
+    else document.getElementById("gen" + (i + 1)).classList.remove("locked");
   }
 }
 

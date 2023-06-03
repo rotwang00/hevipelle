@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.generator {
+  border: 2px solid khaki;
+  background-color: beige;
+  text-align: center;
+  width: 300px;
+  padding: 15px;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.generators-container {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+#currency {
+  margin: 40px;
+  font-size: 3em;
+  text-align: center;
+}
+
+.generator.locked {
+  background-color: rgb(231, 159, 159);
+}
